@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,500|Raleway:400,500');
+
 body {
-  
-  background-size: cover;
+  font-family: 'Raleway', sans-serif;
 }
 
 .box {
@@ -10,4 +11,9 @@ body {
   opacity: 0.6;
   margin-top: 10vh;
   margin-bottom: 10vh;
+}
+
+.box h1 {
+  font-family: 'Oswald', sans-serif;
+  padding-bottom: 40px;
 }
