@@ -1,0 +1,13 @@
+body {
+  
+  background-size: cover;
+}
+
+.box {
+  background-color: black;
+  color: white;
+  height: 80vh;
+  opacity: 0.6;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
