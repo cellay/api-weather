@@ -1,6 +1,9 @@
 
 const proxy = 'https://cors-anywhere.herokuapp.com/';
 const KEY = '034114a19341cc0d8cead3296c91ba28/';
+let daysW = ['Saturday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Sunday'];
+let day = new Date();
+let today = day.getDay();
 
 let success = ({ coords }) => {
   let myPosition = coords.latitude + ',' + coords.longitude;
@@ -8,7 +11,7 @@ let success = ({ coords }) => {
 
   let getInfo = (data) => {
     // página principal
-    main(); 
+    main();
     function main() {
       $('.box').html('');
       $('.box').html(`<h1>${data.currently.temperature}°F</h1>
@@ -18,7 +21,7 @@ let success = ({ coords }) => {
       <p><b>Pressure: </b>${data.currently.pressure}</p>
       <a id="week" href="#">Week prediction</a>
       `);
-      
+
       $('#week').click(() => {
         console.log(data.daily.data[0]);
         $('.box').html('');
@@ -26,26 +29,25 @@ let success = ({ coords }) => {
         <p><b>Tomorrow: </b>${data.daily.data[0].apparentTemperatureMin}°F - ${data.daily.data[0].apparentTemperatureMax}°F</p>
         <a id="back" href="#">Back</a>
         `);
-  
+
         $('#back').click(() => {
           main();
         });
-      }); 
+      });
     };
 
     // background with unsplash
     let url = 'https://source.unsplash.com/800x600/?';
-    $('body').css({ "background": "url('" + url + data.currently.icon + "')", "background-repeat": "no-repeat", "background-size": "cover" });
+    $('body').css({ 'background': "url('" + url + data.currently.icon + "')", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
 
     // Event for prediction
-       
   };
 
   $.ajax({
     url: proxy + URI + KEY + myPosition,
     success: getInfo
-  })
-}
+  });
+};
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(success);
